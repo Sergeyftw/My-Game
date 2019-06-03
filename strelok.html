@@ -1,0 +1,561 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+	<div style="background-image: url(west.jpg); height: 1000px; width: 100%; background-size: 100% 100%" class="west">
+		
+		<h1 class="ml-5 bb" ><span id="score"></span></h1>
+		<p class="gm">Gamemode :<span id="randomtrigger"></span></p>
+		<a class="btn btn-dark btnn" style="position: absolute;margin-left: 45%;display: none" href="test.html">Restart Game</a>
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 20%; margin-top: 19%;">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 60%; margin-top: 16%; ">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 70%; margin-top: 20%; ">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 10%; margin-top: 12%; ">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 40%; margin-top: 13%; ">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 80%; margin-top: 8%; ">
+
+		<img class="enemy2" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 10%; margin-top: 30%; ">
+		<img class="enemy2" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 40%; margin-top: 30%; ">
+		<img class="enemy2" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 60%; margin-top: 30%; ">
+		<img class="enemy2" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 30%; margin-top: 24%; ">
+	
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 0%; margin-top: 20%; ">
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 25%; margin-top: 10%; ">
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 50%; margin-top: 24%; ">
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 70%; margin-top: 35%; ">
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 90%; margin-top: 20%; ">
+
+
+	</div>
+	<script>
+	let score = 0
+	document.getElementById("score").innerHTML = score
+	let enemydown1 = document.querySelectorAll(".enemy1")
+	let enemydown2 = document.querySelectorAll(".enemy2")
+	let enemydown3 = document.querySelectorAll(".enemy3")
+	let west = document.querySelector(".west")
+	randomtrigger = "none"
+	document.getElementById('randomtrigger').innerHTML = randomtrigger
+
+
+	for (let i = 0; i < enemydown1.length; i++) {
+		enemydown1[i].onclick = function(){
+			enemydown1[i].style.display = "none"
+			func(10)
+		}
+		}
+	for (let i = 0; i < enemydown2.length; i++) {
+		enemydown2[i].onclick = function(){
+			enemydown2[i].style.display = "none"
+			func(20)
+			}
+		}
+	for (let i = 0; i < enemydown3.length; i++) {
+		enemydown3[i].onclick = function(){
+			enemydown3[i].style.display = "none"
+			func(30)
+			}
+		}
+	let func = function(arg) { 
+				score = score + arg
+				document.getElementById("score").innerHTML = score
+			}
+	let timer4trigger = function(){
+		let random = Math.random()*3
+		let round = Math.round(random)
+		let randomtrigger1 = ["interval invisibility for 10sec","shoot only pixel cowboy for 10sec","stop shoot for 10sec"]
+		if (round == 0) {
+			for (let i = 0; i < enemydown1.length; i++) {
+				enemydown1[i].style.display = "inline"
+			}
+			for (let i = 0; i < enemydown2.length; i++) {
+				enemydown2[i].style.display = "inline"
+			}
+			for (let i = 0; i < enemydown3.length; i++) {
+				enemydown3[i].style.display = "inline"
+			}
+			randomtrigger = randomtrigger1[round]
+			document.getElementById('randomtrigger').innerHTML = randomtrigger
+			let interv = function(){
+				for (let i = 0; i < enemydown1.length; i++) {
+					enemydown1[i].style.display = "none"
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].style.display = "none"
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].style.display = "none"
+				}
+			}
+			let intervv = setInterval(interv,1100)
+			let interv1 = function(){
+				for (let i = 0; i < enemydown1.length; i++) {
+					enemydown1[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].style.display = "inline"
+				}
+			}
+			let intervv1 = setInterval(interv1,1500)
+			let timer = function(){
+				randomtrigger = "none"
+				document.getElementById('randomtrigger').innerHTML = randomtrigger
+				clearInterval(intervv)
+				clearInterval(intervv1)
+				for (let i = 0; i < enemydown1.length; i++) {
+					enemydown1[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].style.display = "inline"
+				}
+				}
+			setTimeout(timer,10000)
+		}
+		if (round == 1) {
+			for (let i = 0; i < enemydown1.length; i++) {
+				enemydown1[i].style.display = "inline"
+			}
+			for (let i = 0; i < enemydown2.length; i++) {
+				enemydown2[i].style.display = "inline"
+			}
+			for (let i = 0; i < enemydown3.length; i++) {
+				enemydown3[i].style.display = "inline"
+			}
+			randomtrigger = randomtrigger1[round]
+			document.getElementById('randomtrigger').innerHTML = randomtrigger
+			for (let i = 0; i < 6; i++) {
+				enemydown1[i].onclick = function(){
+					enemydown1[i].style.display = "none"
+					score = score + 30
+					document.getElementById("score").innerHTML = score
+				}
+			}
+			for (let i = 0; i < enemydown2.length; i++) {
+				enemydown2[i].onclick = function(){
+					enemydown2[i].style.display = "none"
+					score = score - 50
+					document.getElementById("score").innerHTML = score
+				}
+			}
+			for (let i = 0; i < enemydown3.length; i++) {
+				enemydown3[i].onclick = function(){
+					enemydown3[i].style.display = "none"
+					score = score - 50
+					document.getElementById("score").innerHTML = score
+				}
+			}
+			let timer = function(){
+				randomtrigger = "none"
+				document.getElementById('randomtrigger').innerHTML = randomtrigger
+				for (let i = 0; i < 6; i++) {
+					enemydown1[i].onclick = function(){
+						enemydown1[i].style.display = "none"
+						score = score + 10
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].onclick = function(){
+						enemydown2[i].style.display = "none"
+						score = score + 20
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].onclick = function(){
+						enemydown3[i].style.display = "none"
+						score = score + 30
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < enemydown1.length; i++) {
+					enemydown1[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].style.display = "inline"
+				}
+			}
+			setTimeout(timer,10000)
+		}
+		if (round == 2) {
+			for (let i = 0; i < enemydown1.length; i++) {
+				enemydown1[i].style.display = "inline"
+			}
+			for (let i = 0; i < enemydown2.length; i++) {
+				enemydown2[i].style.display = "inline"
+			}
+			for (let i = 0; i < enemydown3.length; i++) {
+				enemydown3[i].style.display = "inline"
+			}
+			randomtrigger = randomtrigger1[round]
+			document.getElementById('randomtrigger').innerHTML = randomtrigger
+			for (let i = 0; i < 6; i++) {
+				enemydown1[i].onclick = function(){
+					enemydown1[i].style.display = "none"
+					score = score - 100
+					document.getElementById("score").innerHTML = score
+				}
+			}
+			for (let i = 0; i < enemydown2.length; i++) {
+				enemydown2[i].onclick = function(){
+					enemydown2[i].style.display = "none"
+					score = score - 100
+					document.getElementById("score").innerHTML = score
+				}
+			}
+			for (let i = 0; i < enemydown3.length; i++) {
+				enemydown3[i].onclick = function(){
+					enemydown3[i].style.display = "none"
+					score = score - 100
+					document.getElementById("score").innerHTML = score
+				}
+			}
+			let plusscore = function(){
+				score = score + 1
+				document.getElementById("score").innerHTML = score
+			}
+			let plusscoreE = setInterval(plusscore,50)
+			let timer = function(){
+				randomtrigger = "none"
+				document.getElementById('randomtrigger').innerHTML = randomtrigger
+				clearInterval(plusscoreE)
+				for (let i = 0; i < enemydown1.length; i++) {
+					enemydown1[i].onclick = function(){
+						enemydown1[i].style.display = "none"
+						score = score + 10
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].onclick = function(){
+						enemydown2[i].style.display = "none"
+						score = score + 20
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].onclick = function(){
+						enemydown3[i].style.display = "none"
+						score = score + 30
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < 6; i++) {
+					enemydown1[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].style.display = "inline"
+				}
+			}
+			setTimeout(timer,10000)
+		}
+	}
+	setTimeout(timer4trigger,1500)
+
+	let timer = function(){
+		for (let i = 0; i < enemydown1.length; i++) {
+			enemydown1[i].style.opacity = "0"
+			enemydown1[i].style.transition = "2s"
+		}
+		for (let i = 0; i < enemydown2.length; i++) {
+			enemydown2[i].style.opacity = "0"
+			enemydown2[i].style.transition = "2s"
+		}
+		for (let i = 0; i < enemydown3.length; i++) {
+			enemydown3[i].style.opacity = "0"
+			enemydown3[i].style.transition = "2s"
+		}
+		document.querySelector(".bb").style.color = "white"
+		document.querySelector(".gm").style.color = "white"
+		if (score > 0) {
+			document.querySelector(".west").style.backgroundImage = "url(bonfirelit.jpg)"
+			document.querySelector(".west").style.backgroundSize = "100% 100%"
+			document.querySelector(".west").style.transition = "2s"
+			let time = function(){
+				document.querySelector(".west").style.backgroundImage = "url(saloon.jpg)"
+				document.querySelector(".west").style.backgroundSize = "100% 100%"
+				document.querySelector(".west").style.transition = "2s"
+				for (let i = 0; i < enemydown1.length; i++) {
+					enemydown1[i].style.display = "inline"
+					enemydown1[i].style.opacity = "1"
+					enemydown1[i].style.transition = "2s"
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].style.display = "inline"
+					enemydown2[i].style.opacity = "1"
+					enemydown2[i].style.transition = "2s"
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].style.display = "inline"
+					enemydown3[i].style.opacity = "1"
+					enemydown3[i].style.transition = "2s"
+				}
+			}
+			setTimeout(time,3000)
+		}
+		else {
+			document.querySelector(".west").style.backgroundImage = "url(dead.jpg)"
+			document.querySelector(".west").style.backgroundSize = "100% 100%"
+			document.querySelector(".west").style.transition = "2s"
+			document.querySelector(".btnn").style.display = "inline"
+		 }
+	}
+	setTimeout(timer,12000)
+	let timer4trigger2 = function(){
+		let random = Math.random()*3
+		let round = Math.round(random)
+		let randomtrigger2 = ["x2 more points for 5sec","x2 less points for 5sec","more cowboys for 5sec"]
+		if (round == 0) {
+			for (let i = 0; i < enemydown1.length; i++) {
+				enemydown1[i].style.display = "inline"
+			}
+			for (let i = 0; i < enemydown2.length; i++) {
+				enemydown2[i].style.display = "inline"
+			}
+			for (let i = 0; i < enemydown3.length; i++) {
+				enemydown3[i].style.display = "inline"
+			}
+			randomtrigger = randomtrigger2[round]
+			document.getElementById('randomtrigger').innerHTML = randomtrigger
+			for (let i = 0; i < 6; i++) {
+				enemydown1[i].onclick = function(){
+					enemydown1[i].style.display = "none"
+					score = score + 20
+					document.getElementById("score").innerHTML = score
+				}
+			}
+			for (let i = 0; i < enemydown2.length; i++) {
+				enemydown2[i].onclick = function(){
+					enemydown2[i].style.display = "none"
+					score = score + 40
+					document.getElementById("score").innerHTML = score
+				}
+			}
+			for (let i = 0; i < enemydown3.length; i++) {
+				enemydown3[i].onclick = function(){
+					enemydown3[i].style.display = "none"
+					score = score + 60
+					document.getElementById("score").innerHTML = score
+				}
+			}
+			let timer = function(){
+				randomtrigger = "none"
+				document.getElementById('randomtrigger').innerHTML = randomtrigger
+				for (let i = 0; i < 6; i++) {
+					enemydown1[i].onclick = function(){
+						enemydown1[i].style.display = "none"
+						score = score + 10
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].onclick = function(){
+						enemydown2[i].style.display = "none"
+						score = score + 20
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].onclick = function(){
+						enemydown3[i].style.display = "none"
+						score = score + 30
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < 6; i++) {
+					enemydown1[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].style.display = "inline"
+				}
+				}
+			setTimeout(timer,6000)
+			}
+			if (round == 1) {
+				for (let i = 0; i < enemydown1.length; i++) {
+					enemydown1[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].style.display = "inline"
+				}
+				randomtrigger = randomtrigger2[round]
+				document.getElementById('randomtrigger').innerHTML = randomtrigger
+				for (let i = 0; i < 6; i++) {
+					enemydown1[i].onclick = function(){
+						enemydown1[i].style.display = "none"
+						score = score + 5
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].onclick = function(){
+						enemydown2[i].style.display = "none"
+						score = score + 10
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].onclick = function(){
+						enemydown3[i].style.display = "none"
+						score = score + 15
+						document.getElementById("score").innerHTML = score
+					}
+				}
+				let timer = function(){
+					randomtrigger = "none"
+					document.getElementById('randomtrigger').innerHTML = randomtrigger
+					for (let i = 0; i < 6; i++) {
+						enemydown1[i].onclick = function(){
+							enemydown1[i].style.display = "none"
+							score = score + 10
+							document.getElementById("score").innerHTML = score
+						}
+					}
+					for (let i = 0; i < enemydown2.length; i++) {
+						enemydown2[i].onclick = function(){
+							enemydown2[i].style.display = "none"
+							score = score + 20
+							document.getElementById("score").innerHTML = score
+						}
+					}
+					for (let i = 0; i < enemydown3.length; i++) {
+						enemydown3[i].onclick = function(){
+							enemydown3[i].style.display = "none"
+							score = score + 30
+							document.getElementById("score").innerHTML = score
+						}
+					}
+					for (let i = 0; i < 6; i++) {
+						enemydown1[i].style.display = "inline"
+					}
+					for (let i = 0; i < enemydown2.length; i++) {
+						enemydown2[i].style.display = "inline"
+					}
+					for (let i = 0; i < enemydown3.length; i++) {
+						enemydown3[i].style.display = "inline"
+					}
+					}
+				setTimeout(timer,6000)
+			}
+			if (round == 2) {
+				for (let i = 0; i < enemydown1.length; i++) {
+					enemydown1[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown2.length; i++) {
+					enemydown2[i].style.display = "inline"
+				}
+				for (let i = 0; i < enemydown3.length; i++) {
+					enemydown3[i].style.display = "inline"
+				}
+				randomtrigger = randomtrigger2[round]
+				document.getElementById('randomtrigger').innerHTML = randomtrigger
+				for (let i = 0; i < 5; i++){
+						let pixelcowboy = document.createElement("img")
+						west.appendChild(pixelcowboy)
+						let mcmem = document.createElement("img")
+						west.appendChild(mcmem)
+						let realcowboy = document.createElement("img")
+						west.appendChild(realcowboy)
+						pixelcowboy.src = "shooter.png"
+						mcmem.src = "cowboy2.png"
+						realcowboy.src = "cowboy.png"
+						pixelcowboy.style.width = "6%"
+						realcowboy.style.width = "5%"
+						mcmem.style.width = "10%"
+						pixelcowboy.style.marginLeft = "5%"
+						realcowboy.style.marginLeft = "10%"
+						mcmem.style.marginLeft = "15%"
+						for (let i = 0; i < 5; i++) {
+							pixelcowboy.onclick = function(){
+								pixelcowboy.style.display = "none"
+								score = score + 10
+								document.getElementById("score").innerHTML = score
+							}
+						}
+						for (let i = 0; i < 5; i++) {
+							mcmem.onclick = function(){
+								mcmem.style.display = "none"
+								score = score + 20
+								document.getElementById("score").innerHTML = score
+							}
+						}
+						for (let i = 0; i < 5; i++) {
+							realcowboy.onclick = function(){
+								realcowboy.style.display = "none"
+								score = score + 30
+								document.getElementById("score").innerHTML = score
+							}
+						}
+						let timer = function(){
+							randomtrigger = "none"
+							document.getElementById('randomtrigger').innerHTML = randomtrigger
+							pixelcowboy.style.display = "none"
+							realcowboy.style.display = "none"
+							mcmem.style.display = "none"
+							for (let i = 0; i < 6; i++) {
+								enemydown1[i].style.display = "inline"
+							}
+							for (let i = 0; i < enemydown2.length; i++) {
+								enemydown2[i].style.display = "inline"
+							}
+							for (let i = 0; i < enemydown3.length; i++) {
+								enemydown3[i].style.display = "inline"
+							}
+						}
+						setTimeout(timer,6000)
+					}
+			}
+		}
+	setTimeout(timer4trigger2,15000)
+	let timerr = function(){
+		for (let i = 0; i < enemydown1.length; i++) {
+			enemydown1[i].style.opacity = "0"
+			enemydown1[i].style.transition = "2s"
+		}
+		for (let i = 0; i < enemydown2.length; i++) {
+			enemydown2[i].style.opacity = "0"
+			enemydown2[i].style.transition = "2s"
+		}
+		for (let i = 0; i < enemydown3.length; i++) {
+			enemydown3[i].style.opacity = "0"
+			enemydown3[i].style.transition = "2s"
+		}
+		if (score > 500) {
+			west.style.backgroundImage = "url(bonfirelit.jpg)"
+			west.style.backgroundSize = "100% 100%"
+			west.style.transition = "2s"
+			document.querySelector(".btnn").style.display = "inline"
+		}
+		else {
+			west.style.backgroundImage = "url(dead.jpg)"
+			west.style.backgroundSize = "100% 100%"
+			west.style.transition = "2s"
+			document.querySelector(".btnn").style.display = "inline"
+		 }
+	}
+	setTimeout(timerr,25000)
+	</script>
+</body>
+</html>

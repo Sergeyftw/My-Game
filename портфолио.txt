@@ -1,0 +1,22 @@
+1. Свой сайт: 
+	Свой сайт на хтмл https://levii00.github.io/site/ (организация г.Якутска)
+
+2. Сайты социальных сетей:
+	 Twitter https://levii00.github.io/site1/, youtube https://levii00.github.io/YT/, Instagram, свой сайт игровой на bootstrap
+
+3. Простые игры на JavaScript: 
+	Тест на js, квест на js
+
+4. Изучение функций JavaScript: 
+	Найди слона, поле чудес
+
+5. Изучение массивов и циклов Javascript:
+	Plants vs Zombie, морской бой
+
+6. Изучение услвоий JavaScript: 
+	Стрелок, настольная игра
+
+7. Изучение функций с return и повтор Javascript:
+	 Поймай муравья, hearthstone, игра Jake
+
+8. Своя игра на джс

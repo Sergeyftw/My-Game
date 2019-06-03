@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<div class="block" style="background-color: red;width: 100px;height: 100px;position: absolute;"></div>
+<script type="text/javascript">
+	let block = document.querySelector(".block")
+	let ii = 0
+	let moveBlock = function(){
+		block.style.left = ii
+		ii++
+	}
+	setInterval(moveBlock,10)
+</script>
+</body>
+</html>
